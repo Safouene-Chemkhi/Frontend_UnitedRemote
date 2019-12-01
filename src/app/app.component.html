@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Home</a>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log out</button>
+      <button *ngIf="authenticated" class="btn btn-outline-success my-2 my-sm-0" (click)="logout()">Log out</button>
 </nav>
 <main role="main" class="container">
   <router-outlet></router-outlet>
