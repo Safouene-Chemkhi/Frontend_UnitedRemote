@@ -1,3 +1,29 @@
-<p>
-  signup works!
-</p>
+<div class="text-center">
+    <form class="form-signin">
+      <div [formGroup]="form">
+        <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input formControlName="email" name='email' type="email" id="inputEmail" class="form-control"
+          placeholder="Email address" required autofocus>
+        <div class="alert alert-danger" *ngIf="f.email.touched && f.email.invalid">
+          Email is required.
+        </div>
+        <div class="alert alert-danger" *ngIf="f.email.touched && f.email.errors">
+          Email must be at least 8 characters long.
+        </div>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input formControlName="password" name='password' type="password" id="inputPassword" class="form-control"
+          placeholder="Password" required>
+        <div class="alert alert-danger" *ngIf="f.password.touched && f.password.invalid">
+          Password is required.
+        </div>
+        <div class="alert alert-danger" *ngIf="f.password.touched && f.password.errors">
+          Password must be at least 8 characters long.
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" (click)="login()">Sign up.</button>
+        <a routerLink="/login">Already member? Sign in!</a>
+        <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+      </div>
+    </form>
+  </div>

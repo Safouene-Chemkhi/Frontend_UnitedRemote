@@ -7,7 +7,7 @@ export const environment = {
   googleAPIKey : "AIzaSyAdYM0wY2gwdLz286hbcNjn8MD8cNHlcH4"
 };
 
-export const API_URL = 'https://localhost:3000';
+export const API_URL = 'http://localhost:3000';
 
 /*
  * In development mode, to ignore zone related error stack frames such as

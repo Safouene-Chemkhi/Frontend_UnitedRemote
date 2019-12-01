@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { ShopComponent } from './shop/shop.component';
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,
@@ -23,13 +27,16 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path : '', component : LoginComponent },
-      { path : 'home', component : HomeComponent},
+      { path : 'home', component : HomeComponent, canActivate: [AuthGuardService] },
       { path : 'login', component:LoginComponent},
       { path : 'signup', component:SignupComponent}
     ])
 
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

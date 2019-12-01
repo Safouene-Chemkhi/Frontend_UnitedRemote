@@ -1,0 +1,9 @@
+<div class="card">
+  <img [src]="shop.icon" alt="..." style="padding: 5px ; height: 50px; width: 50px">
+  <div class="card-body">
+    <div style="height: 5rem">
+      <h5 class="card-title">{{shop.name}}</h5>
+    </div>
+    <button [class]="btn_style" (click)="like()">{{btn_txt}}</button>
+  </div>
+</div>

@@ -15,13 +15,6 @@ export class HomeComponent implements OnInit {
     this.http.get(this.url, {headers: headers}).subscribe(res => {
       console.log(res);  
     })*/
-
-    this.getPosition().then(pos=>
-      {
-         console.log(`Positon: ${pos.lng} ${pos.lat}`);
-         this.findNearbyPlaces(pos);
-      });
-
    }
 
    getPosition(): Promise<any>
@@ -54,15 +47,29 @@ export class HomeComponent implements OnInit {
    }
     
        // Handle the results (up to 20) of the Nearby Search
-     nearbyCallback(results, status) {
+     nearbyCallback(results, status, pagination) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
+          this.nearby_shops.concat(results);
+          console.log(this.nearby_shops);
+          /*setInterval(() => {
           this.nearby_shops = results;
-          console.log(results);
+          console.log(this.nearby_shops);
+        }, 3000);*/
         }
+
+        if (pagination.hasNextPage) {
+          sleep:2;
+          pagination.nextPage();
+      }
+
       }
 
   ngOnInit() {
-
+    this.getPosition().then(pos=>
+      {
+         console.log(`Positon: ${pos.lng} ${pos.lat}`);
+         this.findNearbyPlaces(pos);
+      });
   }
 
 }
