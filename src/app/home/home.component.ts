@@ -58,8 +58,10 @@ export class HomeComponent implements OnInit {
         }
 
         if (pagination.hasNextPage) {
-          sleep:2;
-          pagination.nextPage();
+          //sleep:2;
+          setTimeout(() => {
+            pagination.nextPage();
+          }, 2000);
       }
 
       }
